@@ -23,7 +23,47 @@ const SingleDishComp = (props) => {
     const submitUpdateDish = (e) => {
         e.preventDefault();
         props.updateDish(props.dish._id, updateDish)
-        setShowing(false)
+        let validSubmission = true;
+
+        if(updateDish.category.length < 1){
+            setIsValidState({
+                valid: false,
+                message: "But what category is it?"
+            })
+            validSubmission = false;
+        }if(updateDish.cost < 1){
+            setIsValidState({
+                valid: false,
+                message: "IT'S FREE?! I don't believe you."
+            })
+            validSubmission = false;
+        }if(updateDish.location.length < 1){
+            setIsValidState({
+                valid: false,
+                message: "Restaurant needs a name"
+            })
+            validSubmission = false;
+        }if(updateDish.dishName.length < 2){
+            setIsValidState({
+                valid: false,
+                message: "Dish name is not long enough"
+            })
+            validSubmission = false;
+        }
+        if(validSubmission){
+            props.updateDish(updateDish)
+            setUpdateDish({
+                dishName: "",
+                location: "",
+                cost: 0,
+                category: "" 
+            })
+            setIsValidState({
+                valid: true,
+                message: ""
+            })
+            setShowing(false)
+        }
     }
     return(
         <div className="index-single-item">
@@ -44,10 +84,12 @@ const SingleDishComp = (props) => {
             {
                  showing ?
                  <div id="edit-dish-form">
-                 <button onClick={toggleShowing}>Close Post</button>
+                 <button onClick={toggleShowing}>Close Edit</button>
                  <form onSubmit={submitUpdateDish}>
                      {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
                      Dish Name: <input onChange={handleInputChange} type="text" name="dishName" value={updateDish.dishName}/>
+                     <br />
+                     Image: <input onChange={handleInputChange} type="file" name="image" value={updateDish.image}/>
                      <br />
                      Restaurant: <input onChange={handleInputChange} type="text" name="location" value={updateDish.location}/>
                      <br />

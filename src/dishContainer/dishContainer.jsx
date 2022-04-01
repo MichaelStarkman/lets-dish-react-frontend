@@ -82,7 +82,9 @@ const DishContainer = () => {
             setRequestError(parsedResponse.data) 
         }
     }
-    useEffect (getDishes, [])
+    useEffect(()=>{
+        getDishes()
+     }, [])
     return (
         <div>
             <h2>Dish goes here!</h2>

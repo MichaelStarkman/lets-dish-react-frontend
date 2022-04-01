@@ -4,6 +4,7 @@ const NewDishComp = (props) => {
     const [showing, setShowing] = useState(false)
     const [newDish, setNewDish] = useState({
         dishName: "",
+        image: "",
         location: "",
         cost: 0,
         category: "" 
@@ -53,6 +54,7 @@ const NewDishComp = (props) => {
             props.createNewDish(newDish)
             setNewDish({
                 dishName: "",
+                image: "",
                 location: "",
                 cost: 0,
                 category: "" 
@@ -75,6 +77,8 @@ const NewDishComp = (props) => {
                     {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
                     { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null}
                     Dish Name: <input onChange={handleInputChange} type="text" name="dishName" value={newDish.dishName}/>
+                    <br />
+                    Image: <input onChange={handleInputChange} type="file" name="image" value={newDish.image} accept="image/png, image/jpeg"/>
                     <br />
                     Restaurant: <input onChange={handleInputChange} type="text" name="location" value={newDish.location}/>
                     <br />
