@@ -77,10 +77,6 @@ const SingleDishComp = (props) => {
                Category: {props.dish.category}
                 
             </h2>
-
-             <button onClick={()=>{
-                 props.deleteDish(props.dish._id)
-             }}>Delete Dish</button>
             {
                  showing ?
                  <div id="edit-dish-form">
@@ -103,6 +99,11 @@ const SingleDishComp = (props) => {
                  :
                  <button onClick={toggleShowing}>Edit this dish</button>
             }
+            <br />
+             <button onClick={()=>{
+                 props.deleteDish(props.dish._id)
+             }}>Delete Dish</button>
+            
              <>
              </>
              

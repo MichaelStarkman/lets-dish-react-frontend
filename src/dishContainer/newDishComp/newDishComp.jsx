@@ -78,8 +78,8 @@ const NewDishComp = (props) => {
                     { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null}
                     Dish Name: <input onChange={handleInputChange} type="text" name="dishName" value={newDish.dishName}/>
                     <br />
-                    Image: <input onChange={handleInputChange} type="file" name="image" value={newDish.image} accept="image/png, image/jpeg"/>
-                    <br />
+                    {/* Image: <input onChange={handleInputChange} type="file" name="image" value={newDish.image} accept="image/png, image/jpeg"/>
+                    <br /> */}
                     Restaurant: <input onChange={handleInputChange} type="text" name="location" value={newDish.location}/>
                     <br />
                     Price: <input onChange={handleInputChange} type="number" name="cost" value={newDish.cost}/>
