@@ -10,6 +10,10 @@ const DishContainer = () => {
         console.log(newDish);
         console.log("Let's create this")
 
+        // const data = new FormData()
+        // data.append("file", image)
+        // data.append("upload_preset")
+        // const uploadImage = await fetch("https://api.cloudinary.com/v1_1/lets-dish-cloudinary/image/upload") 
         // Send a request to the our back-end
         const apiResponse = await fetch("http://localhost:3001/dishes", {
             method: "POST",
@@ -87,7 +91,7 @@ const DishContainer = () => {
      }, [])
     return (
         <div>
-            <h2>Dish goes here!</h2>
+            <h2>Start dishin''</h2>
             <NewDishComp
             newDishServerError={newDishServerError}
             createNewDish={createNewDish}
