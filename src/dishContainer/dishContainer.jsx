@@ -36,7 +36,7 @@ const DishContainer = () => {
     }
     const deleteDish = async (idToDelete) => {
         try{
-            const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/${idToDelete}`, {
+            const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/dishes/${idToDelete}`, {
             method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -55,7 +55,7 @@ const DishContainer = () => {
     }
     const getDishes = async () => {
         try{
-            const dishes = await fetch("https://lets-dish-express-api.herokuapp.com")
+            const dishes = await fetch("https://lets-dish-express-api.herokuapp.com/dishes")
             const parsedDishes = await dishes.json();
             setDishes(parsedDishes.data)
         } catch (err){
@@ -71,7 +71,7 @@ const DishContainer = () => {
         //         newDishes.push(dishes[i])
         //     }
         // }
-        const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/${idToUpdate}`, {
+        const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/dishes/${idToUpdate}`, {
             method: "PUT",
             body: JSON.stringify(dishToUpdate),
             headers: {
