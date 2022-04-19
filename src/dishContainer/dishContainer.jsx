@@ -15,7 +15,7 @@ const DishContainer = () => {
         // data.append("upload_preset")
         // const uploadImage = await fetch("https://api.cloudinary.com/v1_1/lets-dish-cloudinary/image/upload") 
         // Send a request to the our back-end
-        const apiResponse = await fetch("http://localhost:3001/dishes", {
+        const apiResponse = await fetch("https://lets-dish-express-api.herokuapp.com", {
             method: "POST",
             body: JSON.stringify(newDish),
             headers: {
@@ -36,7 +36,7 @@ const DishContainer = () => {
     }
     const deleteDish = async (idToDelete) => {
         try{
-            const apiResponse = await fetch(`http://localhost:3001/dishes/${idToDelete}`, {
+            const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/${idToDelete}`, {
             method: "DELETE"
             })
             const parsedResponse = await apiResponse.json()
@@ -55,7 +55,7 @@ const DishContainer = () => {
     }
     const getDishes = async () => {
         try{
-            const dishes = await fetch("http://localhost:3001/dishes")
+            const dishes = await fetch("https://lets-dish-express-api.herokuapp.com")
             const parsedDishes = await dishes.json();
             setDishes(parsedDishes.data)
         } catch (err){
@@ -71,7 +71,7 @@ const DishContainer = () => {
         //         newDishes.push(dishes[i])
         //     }
         // }
-        const apiResponse = await fetch(`http://localhost:3001/dishes/${idToUpdate}`, {
+        const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/${idToUpdate}`, {
             method: "PUT",
             body: JSON.stringify(dishToUpdate),
             headers: {
