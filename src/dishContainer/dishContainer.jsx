@@ -15,7 +15,7 @@ const DishContainer = () => {
         // data.append("upload_preset")
         // const uploadImage = await fetch("https://api.cloudinary.com/v1_1/lets-dish-cloudinary/image/upload") 
         // Send a request to the our back-end
-        const apiResponse = await fetch("https://lets-dish-express-api.herokuapp.com", {
+        const apiResponse = await fetch("https://lets-dish-express-api.herokuapp.com/dishes", {
             method: "POST",
             body: JSON.stringify(newDish),
             headers: {
