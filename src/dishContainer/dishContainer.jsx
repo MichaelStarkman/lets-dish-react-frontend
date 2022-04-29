@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import SingleDishComp from "./singleDishComp/singleDishComp";
-import NewDishComp from "./newDishComp/newDishComp";
+// import AddDishModal from "../Components/AddDishModal/AddDishModal";
+// import QuoteContainer from "../Components/QuoteContainer/QuoteContainer";
+import FooterBar from "../Components/Footer/FooterBar";
+
+import './dishContainer.css'
 
 const DishContainer = () => {
     const [requestError, setRequestError] = useState("")
@@ -90,21 +94,22 @@ const DishContainer = () => {
         getDishes()
      }, [])
     return (
-        <div>
-            <h2>Start dishin''</h2>
-            <NewDishComp
-            newDishServerError={newDishServerError}
-            createNewDish={createNewDish}
-            ></NewDishComp>
-            {dishes.reverse().map((dish)=>{
-                return <SingleDishComp
-                key={dish._id}
-                dish={dish}
-                deleteDish={deleteDish}
-                updateDish={updateDish}
-                ></SingleDishComp>
-            })}
-        </div>
+            <div>
+                {/* <h1 className='App-title'>Let's Dish!</h1>
+                <AddDishModal
+                newDishServerError={newDishServerError}
+                createNewDish={createNewDish}/> */}
+                {/* <QuoteContainer></QuoteContainer> */}
+                {dishes.reverse().map((dish)=>{
+                    return <SingleDishComp
+                    key={dish._id}
+                    dish={dish}
+                    deleteDish={deleteDish}
+                    updateDish={updateDish}
+                    ></SingleDishComp>
+                })}
+                <FooterBar></FooterBar>
+            </div>
     )
 }
 export default DishContainer;

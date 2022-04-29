@@ -1,0 +1,12 @@
+.quote-container {
+    height: 275px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&family=Water+Brush&display=swap');
+.quote-text {
+    font-family: 'Square Peg', cursive;
+    font-size: 100px;
+}
