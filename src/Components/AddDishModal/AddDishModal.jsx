@@ -13,11 +13,11 @@ import './AddDishModal.css'
 
 
 const AddDishModal = (props) => {
-  console.log(props)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showing, setShowing] = useState(false);
 
   const [newDish, setNewDish] = useState({
       dishName: "",
@@ -39,8 +39,14 @@ const AddDishModal = (props) => {
       })
   }
   const submitNewDish = (e)=>{
-      console.log('hello')
       e.preventDefault()
+      setIsValidState({
+        dishName: "",
+        image: "",
+        location: "",
+        cost: 0,
+        category: "" 
+      })
       let validSubmission = true;
 
       if(newDish.category.length < 1){
@@ -123,7 +129,10 @@ const AddDishModal = (props) => {
                         <br />
                 </ModalBody>
                 <ModalFooter>
-                  <Button type='submit'>Add the Dish!</Button>
+                  <Button 
+                  type='submit'
+                  onClick={handleClose}
+                  >Add the Dish!</Button>
                 < Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
               </ModalFooter>
               </Form>

@@ -1,8 +1,20 @@
 import { useState } from "react"
+import { 
+    Button,
+    Form,
+    FormGroup,
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter 
+} from 'react-bootstrap';
 
 const SingleDishComp = (props) => {
-    const [isValidState, setIsValidState] = useState({valid: true, message: ""})
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [showing, setShowing] = useState(false)
+    const [isValidState, setIsValidState] = useState({valid: true, message: ""})
     const toggleShowing = () => {
         setShowing(!showing)
     }
@@ -12,8 +24,8 @@ const SingleDishComp = (props) => {
         cost: props.dish.cost,
         category: props.dish.category,
         _id: props.dish._id 
+    });
 
-    })
     const handleInputChange = (e) => {
         setUpdateDish({
             ...updateDish,
@@ -62,11 +74,16 @@ const SingleDishComp = (props) => {
                 valid: true,
                 message: ""
             })
-            setShowing(false)
+            setShow(false)
         }
     }
+    const deleteButton = () => {
+        props.deleteDish(props.dish._id)
+        handleClose();
+    }
     return(
-        <div className="index-single-item">
+        <>
+        <div>
             <h2>
                Dish Name: {props.dish.dishName}
                 <br />
@@ -77,37 +94,56 @@ const SingleDishComp = (props) => {
                Category: {props.dish.category}
                 
             </h2>
-            {
-                 showing ?
-                 <div id="edit-dish-form">
-                 <button onClick={toggleShowing}>Close Edit</button>
-                 <form onSubmit={submitUpdateDish}>
-                     {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
-                     Dish Name: <input onChange={handleInputChange} type="text" name="dishName" value={updateDish.dishName}/>
-                     <br />
-                     Image: <input onChange={handleInputChange} type="file" name="image" value={updateDish.image}/>
-                     <br />
-                     Restaurant: <input onChange={handleInputChange} type="text" name="location" value={updateDish.location}/>
-                     <br />
-                     Price: <input onChange={handleInputChange} type="number" name="cost" value={updateDish.cost}/>
-                     <br />
-                     Category: <input onChange={handleInputChange} type="text" name="category" value={updateDish.category}/>
-                     <br />
-                     <button type="submit">Edit Dish!</button>
-                 </form>
-                 </div>
-                 :
-                 <button onClick={toggleShowing}>Edit this dish</button>
-            }
-            <br />
-             <button onClick={()=>{
-                 props.deleteDish(props.dish._id)
-             }}>Delete Dish</button>
-            
-             <>
-             </>
-             
         </div>
+        <div>
+          <Button 
+          variant="primary"
+          onClick={handleShow}
+          >Edit Dish!
+          </Button>
+          
+          <Modal 
+          show={show}
+          onHide={handleClose}
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+          >
+          
+            <ModalHeader closeButton>
+              <Modal.Title>Alright, Let's Dish!</Modal.Title>
+            </ModalHeader>
+            <FormGroup>
+                <Form onClick={submitUpdateDish}>
+                {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
+                {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
+                 <ModalBody>
+  
+                        {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
+                        {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
+                        Dish Name: <input onChange={handleInputChange} type="text" name="dishName" placeholder={updateDish.dishName}/>
+                        <br />
+                        Restaurant: <input onChange={handleInputChange} type="text" name="location" placeholder={updateDish.location}/>
+                        <br />
+                        Price: <input onChange={handleInputChange} type="number" name="cost" placeholder={updateDish.cost}/>
+                        <br />
+                        Category: <input onChange={handleInputChange} type="text" name="category" placeholder={updateDish.category}/>
+                        <br />
+                </ModalBody>
+                <ModalFooter>
+                  <Button type='click'>Edit Dish</Button>
+                < Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
+              </ModalFooter>
+              </Form>
+            </FormGroup>
+          </Modal>
+          <br />
+          <Button 
+          variant="danger"
+          onClick={deleteButton}
+          >Delete Dish</Button>
+        </div>
+      </>  
     )
 }
+
 export default SingleDishComp;

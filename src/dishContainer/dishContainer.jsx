@@ -10,34 +10,34 @@ const DishContainer = () => {
     const [requestError, setRequestError] = useState("")
     const [dishes, setDishes] = useState([])
     const [newDishServerError, setNewDishServerError] = useState ("")
-    const createNewDish = async (newDish) => {
-        console.log(newDish);
-        console.log("Let's create this")
+    // const createNewDish = async (newDish) => {
+    //     console.log(newDish);
+    //     console.log("Let's create this")
 
-        // const data = new FormData()
-        // data.append("file", image)
-        // data.append("upload_preset")
-        // const uploadImage = await fetch("https://api.cloudinary.com/v1_1/lets-dish-cloudinary/image/upload") 
-        // Send a request to the our back-end
-        const apiResponse = await fetch("https://lets-dish-express-api.herokuapp.com/dishes", {
-            method: "POST",
-            body: JSON.stringify(newDish),
-            headers: {
-                "Content-type": "application/json"
-            }
-        })
-        // Parse response from back-end
-        const parsedResponse = await apiResponse.json()
-        // If the response is success:
-        console.log(parsedResponse)
-        if(parsedResponse.success){
-            // Add the new item to the state
-            setDishes([parsedResponse.data, ...dishes])
-        } else {
-            setNewDishServerError(parsedResponse.data)
-            // TODO: refactor state from newDishForm to here, since this is the only place I know whether it worked or not
-        }
-    }
+    //     // const data = new FormData()
+    //     // data.append("file", image)
+    //     // data.append("upload_preset")
+    //     // const uploadImage = await fetch("https://api.cloudinary.com/v1_1/lets-dish-cloudinary/image/upload") 
+    //     // Send a request to the our back-end
+    //     const apiResponse = await fetch("https://lets-dish-express-api.herokuapp.com/dishes", {
+    //         method: "POST",
+    //         body: JSON.stringify(newDish),
+    //         headers: {
+    //             "Content-type": "application/json"
+    //         }
+    //     })
+    //     // Parse response from back-end
+    //     const parsedResponse = await apiResponse.json()
+    //     // If the response is success:
+    //     console.log(parsedResponse)
+    //     if(parsedResponse.success){
+    //         // Add the new item to the state
+    //         setDishes([parsedResponse.data, ...dishes])
+    //     } else {
+    //         setNewDishServerError(parsedResponse.data)
+    //         // TODO: refactor state from newDishForm to here, since this is the only place I know whether it worked or not
+    //     }
+    // }
     const deleteDish = async (idToDelete) => {
         try{
             const apiResponse = await fetch(`https://lets-dish-express-api.herokuapp.com/dishes/${idToDelete}`, {
@@ -55,7 +55,6 @@ const DishContainer = () => {
             setRequestError(err.message)
             // TODO: handle front-end error, not sure what the would be 
         }
-        console.log("delete dish ID " + idToDelete)
     }
     const getDishes = async () => {
         try{
@@ -66,6 +65,57 @@ const DishContainer = () => {
             console.log(err)
         }
     }
+    // const handleInputChange = (e) => {
+    //     setUpdateDish({
+    //         ...updateDish,
+    //         [e.target.name]: e.target.value 
+    //     })
+        // const submitUpdateDish = (e) => {
+        //     console.log('hello')
+        //     e.preventDefault();
+        //     props.updateDish(props.dish._id ,updateDish)
+        //     let validSubmission = true;
+    
+        //     if(updateDish.category.length < 1){
+        //         setIsValidState({
+        //             valid: false,
+        //             message: "But what category is it?"
+        //         })
+        //         validSubmission = false;
+        //     }if(updateDish.cost < 1){
+        //         setIsValidState({
+        //             valid: false,
+        //             message: "IT'S FREE?! I don't believe you."
+        //         })
+        //         validSubmission = false;
+        //     }if(updateDish.location.length < 1){
+        //         setIsValidState({
+        //             valid: false,
+        //             message: "Restaurant needs a name"
+        //         })
+        //         validSubmission = false;
+        //     }if(updateDish.dishName.length < 2){
+        //         setIsValidState({
+        //             valid: false,
+        //             message: "Dish name is not long enough"
+        //         })
+        //         validSubmission = false;
+        //     }
+        //     if(validSubmission){
+        //         props.updateDish(updateDish)
+        //         setUpdateDish({
+        //             dishName: "",
+        //             location: "",
+        //             cost: 0,
+        //             category: "" 
+        //         })
+        //         setIsValidState({
+        //             valid: true,
+        //             message: ""
+        //         })
+        //         setShow(false)
+        //     }
+        // }
     const updateDish = async (idToUpdate, dishToUpdate) => {
         // const newDishes = [];
         // for(let i = 0; i < dishes.length; i++){
@@ -105,6 +155,8 @@ const DishContainer = () => {
                     key={dish._id}
                     dish={dish}
                     deleteDish={deleteDish}
+                    // handleInputChange={props.handleInputChange}
+                    // updateDishFunction={props.updateDishFunction}
                     updateDish={updateDish}
                     ></SingleDishComp>
                 })}
@@ -112,4 +164,5 @@ const DishContainer = () => {
             </div>
     )
 }
+
 export default DishContainer;
