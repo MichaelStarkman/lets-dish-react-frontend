@@ -110,7 +110,7 @@ const AddDishModal = (props) => {
               <Modal.Title>Alright, Let's Dish!</Modal.Title>
             </ModalHeader>
             <FormGroup>
-                <Form onSubmit={submitNewDish}>
+                <Form onClick={submitNewDish}>
                 {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
                 { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null}
                  <ModalBody>

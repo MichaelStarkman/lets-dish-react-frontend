@@ -8,6 +8,7 @@ import {
     ModalBody, 
     ModalFooter 
 } from 'react-bootstrap';
+import './singleDishComp.css'
 
 const SingleDishComp = (props) => {
     const [show, setShow] = useState(false);
@@ -83,64 +84,68 @@ const SingleDishComp = (props) => {
     }
     return(
         <>
-        <div>
-            <h2>
-               Dish Name: {props.dish.dishName}
-                <br />
-              Restaurant:  {props.dish.location}
-                <br />
-               Price: ${props.dish.cost}
-                <br />
-               Category: {props.dish.category}
-                
-            </h2>
-        </div>
-        <div>
-          <Button 
-          variant="primary"
-          onClick={handleShow}
-          >Edit Dish!
-          </Button>
-          
-          <Modal 
-          show={show}
-          onHide={handleClose}
-          dialogClassName="modal-90w"
-          aria-labelledby="example-custom-modal-styling-title"
-          >
-          
-            <ModalHeader closeButton>
-              <Modal.Title>Alright, Let's Dish!</Modal.Title>
-            </ModalHeader>
-            <FormGroup>
-                <Form onClick={submitUpdateDish}>
-                {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
-                {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
-                 <ModalBody>
-  
-                        {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
-                        {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
-                        Dish Name: <input onChange={handleInputChange} type="text" name="dishName" placeholder={updateDish.dishName}/>
-                        <br />
-                        Restaurant: <input onChange={handleInputChange} type="text" name="location" placeholder={updateDish.location}/>
-                        <br />
-                        Price: <input onChange={handleInputChange} type="number" name="cost" placeholder={updateDish.cost}/>
-                        <br />
-                        Category: <input onChange={handleInputChange} type="text" name="category" placeholder={updateDish.category}/>
-                        <br />
-                </ModalBody>
-                <ModalFooter>
-                  <Button type='click'>Edit Dish</Button>
-                < Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
-              </ModalFooter>
-              </Form>
-            </FormGroup>
-          </Modal>
-          <br />
-          <Button 
-          variant="danger"
-          onClick={deleteButton}
-          >Delete Dish</Button>
+        <div className="single-dish-container">
+            <div className="single-dish-text">
+                <h2>
+                Dish Name: {props.dish.dishName}
+                    <br />
+                Restaurant:  {props.dish.location}
+                    <br />
+                Price: ${props.dish.cost}
+                    <br />
+                Category: {props.dish.category}
+                    
+                </h2>
+            </div>
+            <div className="btn-container">
+            <Button 
+            variant="outline-primary"
+            onClick={handleShow}
+            >Edit Dish!
+            </Button>
+            
+            <Modal 
+            show={show}
+            onHide={handleClose}
+            dialogClassName="modal-90w"
+            aria-labelledby="example-custom-modal-styling-title"
+            >
+            
+                <ModalHeader closeButton>
+                <Modal.Title>Alright, Let's Dish!</Modal.Title>
+                </ModalHeader>
+                <FormGroup>
+                    <Form onSubmit={submitUpdateDish}>
+                    {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
+                    {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
+                    <ModalBody>
+    
+                            {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
+                            {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
+                            Dish Name: <input onChange={handleInputChange} type="text" name="dishName" placeholder={updateDish.dishName}/>
+                            <br />
+                            Restaurant: <input onChange={handleInputChange} type="text" name="location" placeholder={updateDish.location}/>
+                            <br />
+                            Price: <input onChange={handleInputChange} type="number" name="cost" placeholder={updateDish.cost}/>
+                            <br />
+                            Category: <input onChange={handleInputChange} type="text" name="category" placeholder={updateDish.category}/>
+                            <br />
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button type='submit'>Edit Dish</Button>
+                    < Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
+                </ModalFooter>
+                </Form>
+                </FormGroup>
+            </Modal>
+            <br />
+            <footer>
+                <Button 
+                variant="outline-danger"
+                onClick={deleteButton}
+                >Delete Dish</Button>
+            </footer>
+            </div>
         </div>
       </>  
     )

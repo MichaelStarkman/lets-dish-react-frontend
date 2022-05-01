@@ -1,0 +1,14 @@
+.single-dish-container{
+    margin: 5vw;
+    border-top: 2px solid gainsboro;
+    border-left: 2px solid gainsboro;
+    border-bottom: 4px solid;
+    border-right: 4px solid;
+}
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    padding: 3vw;
+}
