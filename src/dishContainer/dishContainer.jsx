@@ -75,7 +75,8 @@ const DishContainer = () => {
      }, [])
     return (
             <div>
-                {/* <h1 className='App-title'>Let's Dish!</h1> */}
+                <p className="text">Was there a certain dish you were dreaming about last night? Is there a dish that you have to get everytime you go? </p>
+                <p className="text">'Let's Dish' allows users track dishes that you have to try in and around your neighborhood.</p>
                 <AddDishModal
                 newDishServerError={newDishServerError}
                 createNewDish={createNewDish}/>

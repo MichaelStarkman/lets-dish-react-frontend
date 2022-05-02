@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import AddDishModal from '../AddDishModal/AddDishModal'
+import HeroTitle from "./HeroTitle";
 import './HeroContainer.css'
 
 const HeroContainer = () => {
@@ -51,10 +52,11 @@ const HeroContainer = () => {
         <section className="main-photo">
 
             <div>
+                {/* <HeroTitle /> */}
                 <h1 id="App-title" className='App-title'>Let's Dish!</h1>
-                    <AddDishModal
+                    {/* <AddDishModal
                     newDishServerError={newDishServerError}
-                    createNewDish={createNewDish}/>
+                    createNewDish={createNewDish}/> */}
             </div>
         </section>
     )

@@ -1,14 +1,25 @@
 .single-dish-container{
+    background-color: #FADA69;
+    border-radius: 15px;
     margin: 5vw;
     border-top: 2px solid gainsboro;
     border-left: 2px solid gainsboro;
     border-bottom: 4px solid;
     border-right: 4px solid;
 }
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&family=Water+Brush&display=swap');
+.single-dish-text {
+    border-radius: 15px;
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 3vw;
+    margin: 3vw;
+    border: 1px dashed;
+    background-color: papayawhip;
+}
 .btn-container {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
-    padding: 3vw;
+    padding: 2vw;
 }

@@ -9,14 +9,20 @@
     height: 600px;
     width: 100%;
     margin-top: 8%;
+    /* opacity: 0.5; */
+
 
 }
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@100;300&display=swap');
 #App-title {
-  font-size: 150px;
+  /* color: coral; */
+  text-shadow: 2px 2px 5px black;
+  font-size: 155px;
   font-family: 'Permanent Marker', cursive;
-  margin-bottom: 35%;
+  margin-bottom: 50%;
   z-index: 10px;
+  text-shadow: 2px 2px;
+
 }
 .img {
     opacity: 0.5;

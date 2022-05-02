@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@100;300&display=swap');
+#App-title {
+  font-size: 150px;
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom: 35%;
+  z-index: 10px;
+  opacity: 1.0;
+
+}

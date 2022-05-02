@@ -87,19 +87,20 @@ const SingleDishComp = (props) => {
         <div className="single-dish-container">
             <div className="single-dish-text">
                 <h2>
-                Dish Name: {props.dish.dishName}
-                    <br />
+                <span>&#127869;: </span>
+                {props.dish.dishName}
+                <br />
                 Restaurant:  {props.dish.location}
                     <br />
-                Price: ${props.dish.cost}
-                    <br />
                 Category: {props.dish.category}
+                <br />
+                ${props.dish.cost}
                     
                 </h2>
             </div>
             <div className="btn-container">
             <Button 
-            variant="outline-primary"
+            variant="primary"
             onClick={handleShow}
             >Edit Dish!
             </Button>
@@ -116,8 +117,8 @@ const SingleDishComp = (props) => {
                 </ModalHeader>
                 <FormGroup>
                     <Form onSubmit={submitUpdateDish}>
-                    {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
-                    {/* { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null} */}
+                    {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>}
+                    { props.newDishServerError ? <p className="form-error">{props.newDishServerError}</p> : null}
                     <ModalBody>
     
                             {/* {isValidState.valid ? null : <p className="form-error">{isValidState.message}</p>} */}
@@ -133,7 +134,7 @@ const SingleDishComp = (props) => {
                     </ModalBody>
                     <ModalFooter>
                     <Button type='submit'>Edit Dish</Button>
-                    < Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
+                    < Button variant="secondary" onClick={handleClose}>Cancel</Button>
                 </ModalFooter>
                 </Form>
                 </FormGroup>
@@ -141,7 +142,7 @@ const SingleDishComp = (props) => {
             <br />
             <footer>
                 <Button 
-                variant="outline-danger"
+                variant="danger"
                 onClick={deleteButton}
                 >Delete Dish</Button>
             </footer>
